@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 const Gaming: FC = () => {
     // Set the target date to November 28th, 5:00 PM of the current year
     //(mm,dd,hh,mm,ss)
-    const targetDate = new Date(new Date().getFullYear(), 10, 30, 18, 0, 0).toISOString();
+    const targetDate = new Date(new Date().getFullYear(), 11, 1, 16, 0, 0).toISOString();
 
     function calculateTimeLeft() {
         const difference = new Date(targetDate).getTime() - new Date().getTime();

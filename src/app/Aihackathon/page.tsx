@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Hackathon: FC = () => {
-    const targetDate = new Date(new Date().getFullYear(), 10, 30, 17, 0, 0).toISOString();
+    const targetDate = new Date(new Date().getFullYear(), 11, 1, 16, 0, 0).toISOString();
 
     const calculateTimeLeft = () => {
         const difference = new Date(targetDate).getTime() - new Date().getTime();
