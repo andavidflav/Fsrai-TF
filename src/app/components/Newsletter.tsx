@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const Newsletter: React.FC = () => {
   // Set target date to November 28th, 5:00 PM of the current year
-  const targetDate = new Date(new Date().getFullYear(), 11, 1, 16, 0, 0).toISOString();
+  const targetDate = new Date(new Date().getFullYear(), 11, 2, 16, 0, 0).toISOString();
 
   const calculateTimeLeft = () => {
     const difference = new Date(targetDate).getTime() - new Date().getTime();

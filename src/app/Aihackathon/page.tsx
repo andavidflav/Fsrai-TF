@@ -199,7 +199,7 @@ import { CiMail } from 'react-icons/ci';
 import { FaInstagram } from 'react-icons/fa';
 
 const Hackathon: FC = () => {
-    const targetDate = new Date(new Date().getFullYear(), 11, 1, 16, 0, 0).toISOString();
+    const targetDate = new Date(new Date().getFullYear(), 11, 2, 16, 0, 0).toISOString();
 
     const calculateTimeLeft = () => {
         const difference = new Date(targetDate).getTime() - new Date().getTime();
@@ -306,10 +306,21 @@ const Hackathon: FC = () => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-violet-800 to-black opacity-80"></div>
                 <div className="absolute top-5 left-5">
-                    <img src="/chesco.jpg" alt="Logo" className="h-16 w-auto" />
+                    <img src="/fsrai.png" alt="Logo" className="h-20 w-auto" />
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold text-center z-10">AI Hackathon</h1>
-                <p className="text-xl md:text-2xl text-center mt-4 z-10">Powered by Chesco</p>
+                
+                {/* Replace the "Powered by Chesco" text with the Chesco logo */}
+                <div className="mt-4 z-10 flex items-center gap-2 text-center">
+                    <span className="text-lg md:text-xl">Powered by</span>
+                    <img
+                        src="/cl2.png"
+                        alt="Chesco Logo"
+                        className="h-16 w-auto filter invert"
+                    />
+                </div>
+
+                
                 <div className="mt-10 text-gray-100 z-10">
                     <div className="flex gap-4 justify-center text-gray-100 text-lg font-mono">
                         {Object.entries(timeLeft).map(([unit, value], index) => (
@@ -325,8 +336,9 @@ const Hackathon: FC = () => {
                 </div>
             </section>
 
+
             {/* Scrolling Logos Section */}
-            <section className="py-10 bg-gradient-to-t from-purple-900 to-black md:px-40">
+            {/* <section className="py-10 bg-gradient-to-t from-purple-900 to-black md:px-40">
                 <div className="container mx-auto px-5 md:px-20 overflow-hidden">
                     <div className="flex animate-scroll items-center gap-8">
                         {logos.map((logo, index) => (
@@ -339,11 +351,11 @@ const Hackathon: FC = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Rules and Schedule Section */}
-            <section className="container mx-auto px-5 md:px-40 py-20 flex flex-col items-center bg-gradient-to-t from-purple-600 via-purple-900 to-black">
-                {/* Rules Section */}
+            {/* <section className="container mx-auto px-5 md:px-40 py-20 flex flex-col items-center bg-gradient-to-t from-purple-600 via-purple-900 to-black">
+                
                 <div className="w-full md:w-1/2 mb-10">
                     <div className="relative group bg-gradient-to-b from-purple-700 to-violet-900 text-white p-6 rounded-xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl">
                         <h2 className="text-3xl font-bold mb-4">Rules and Regulations</h2>
@@ -355,10 +367,10 @@ const Hackathon: FC = () => {
                         </ul>
                         <div className="absolute inset-0 bg-purple-700 opacity-0 group-hover:opacity-20 rounded-xl transition-all duration-500"></div>
                     </div>
-                </div>
+                </div> */}
                 
                 {/* Event Schedule Section */}
-                <div className="w-full md:w-1/2">
+                {/* <div className="w-full md:w-1/2">
                     <div className="relative group bg-gradient-to-b from-black to-violet-900 text-white p-6 rounded-xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl">
                         <h2 className="text-3xl font-bold mb-4">Event Schedule</h2>
                         <ul className="list-none text-gray-300 leading-relaxed">
@@ -371,13 +383,13 @@ const Hackathon: FC = () => {
                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 rounded-xl transition-all duration-500"></div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Jury Panel Section */}
-            <section className="py-10 bg-gradient-to-r from-gray-300 to-gray-200">
+            {/* <section className="py-10 bg-gradient-to-r from-gray-300 to-gray-200">
                 <h2 className="text-2xl font-bold text-center mb-6">Jury Panel</h2>
                 <div className="container mx-auto px-5 md:px-40">
-                    {/* Stacked Jury Details Cards */}
+                    
                     <div className="relative">
                         {jury.map((member, index) => (
                             <div
@@ -413,7 +425,7 @@ const Hackathon: FC = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
 
             {/* Footer */}

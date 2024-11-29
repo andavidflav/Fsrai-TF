@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { motion } from "framer-motion";
 
 const AboutSection = () => {
@@ -42,6 +43,7 @@ const AboutSection = () => {
       <div className="mt-20">
         <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Event 1 */}
+          <Link href="/Aihackathon" passHref>
           <motion.div
             className="relative p-6 bg-gradient-to-r from-purple-900 to-blue-900  rounded-2xl shadow-lg overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
@@ -58,8 +60,10 @@ const AboutSection = () => {
               whileHover={{ opacity: 0.2 }}
             ></motion.div>
           </motion.div>
+          </Link>
 
           {/* Event 2 */}
+          <Link href="/Techtalk" passHref>
           <motion.div
             className="relative p-6 bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl shadow-lg overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
@@ -76,8 +80,10 @@ const AboutSection = () => {
               whileHover={{ opacity: 0.2 }}
             ></motion.div>
           </motion.div>
+          </Link>
 
           {/* Event 3 */}
+          <Link href="/Gaming" passHref>
           <motion.div
             className="relative p-6 bg-gradient-to-l from-purple-900 to-blue-900 rounded-2xl shadow-lg overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
@@ -94,6 +100,7 @@ const AboutSection = () => {
               whileHover={{ opacity: 0.2 }}
             ></motion.div>
           </motion.div>
+          </Link>
         </div>
       </div>
 

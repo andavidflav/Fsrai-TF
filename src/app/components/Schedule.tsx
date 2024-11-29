@@ -27,54 +27,116 @@
 
 
 'use client';
+import { useEffect, useRef } from 'react';
 
 const Schedule = () => {
     const scheduleItems = [
         { time: '9:00 AM', title: 'Registration', description: 'Sign-in and start the day!' },
         { time: '10:00 AM', title: 'Keynote', description: 'Opening speech by the guest speaker.' },
-        { time: '11:00 AM', title: 'Workshop 1', description: 'First workshop session begins.' },
         { time: '12:00 PM', title: 'Lunch Break', description: 'Relax and enjoy your lunch.' },
-        { time: '1:00 PM', title: 'Workshop 2', description: 'Second workshop session begins.' },
         { time: '2:00 PM', title: 'Hackathon Begins', description: 'Start coding and creating solutions.' },
-        { time: '3:00 PM', title: 'Networking', description: 'Meet new people and share ideas.' },
-        { time: '4:00 PM', title: 'Pitching', description: 'Pitch your ideas to the judges.' },
         { time: '5:00 PM', title: 'Submission Deadline', description: 'Submit your project for review.' },
-        { time: '6:00 PM', title: 'Closing Remarks', description: 'Closing speech and prize distribution.' },
+        { time: '6:00 PM', title: 'Networking', description: 'Meet new people and share ideas.' },
+        { time: '7:00 PM', title: 'Pitching', description: 'Pitch your ideas to the judges.' },
+        { time: '8:00 PM', title: 'Closing Remarks', description: 'Closing of the event.' },
+        { time: '9:00 PM', title: 'After Party', description: 'Celebrate the achievements!' },
+        { time: '10:00 PM', title: 'Event End', description: 'Farewell and see you next time!' },
     ];
 
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    // Handle mouse wheel scroll for horizontal scrolling
+    const handleWheelScroll = (event: WheelEvent) => {
+        if (scrollRef.current) {
+            const scrollAmount = event.deltaY; // How much the wheel moves vertically
+            const scrollContainer = scrollRef.current;
+
+            // Move horizontally based on wheel movement
+            scrollContainer.scrollLeft += scrollAmount;
+
+            // Prevent the default behavior of vertical scroll
+            event.preventDefault();
+        }
+    };
+
+    // Scroll left function
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollLeft -= 250; // Scroll left by 250px (adjust as needed)
+        }
+    };
+
+    // Scroll right function
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollLeft += 250; // Scroll right by 250px (adjust as needed)
+        }
+    };
+
+    useEffect(() => {
+        // Attach wheel event listener to handle scroll
+        if (scrollRef.current) {
+            scrollRef.current.addEventListener('wheel', handleWheelScroll, { passive: false });
+        }
+
+        return () => {
+            if (scrollRef.current) {
+                scrollRef.current.removeEventListener('wheel', handleWheelScroll);
+            }
+        };
+    }, []);
+
     return (
-        <div
-            className="relative my-10 w-full py-20"
-            style={{
-                backgroundImage: `url('./img3.png')`, // Background image (optional)
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-            }}
-        >
+        <div className="relative my-10 w-full py-20 bg-slate-900">
             <div className="boxed-container">
                 <h2 className="text-3xl font-bold text-center mb-10 text-white">Event Schedule</h2>
 
-                <div className="relative w-full h-auto flex justify-center">
-                    {/* Container for the schedule items */}
-                    <div className="relative w-full max-w-3xl flex flex-col items-center">
-                        {/* Vertical Layout with increased spacing */}
+                {/* Horizontal Scrolling Container */}
+                <div className="relative w-full h-auto overflow-hidden flex items-center space-x-8 py-4 snap-x snap-mandatory scroll-smooth">
+                    {/* Left Scroll Arrow */}
+                    <button
+                        onClick={scrollLeft}
+                        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                    >
+                        &#8592;
+                    </button>
+
+                    <div
+                        ref={scrollRef}
+                        className="relative w-full h-auto overflow-hidden flex items-center space-x-8 py-4 snap-x snap-mandatory scroll-smooth"
+                    >
+                        {/* Schedule Items */}
                         {scheduleItems.map((item, index) => (
                             <div
                                 key={index}
-                                className="relative z-10 flex items-center mb-10"  // Added margin bottom for spacing
+                                className="relative flex flex-col items-center flex-shrink-0 snap-center"
+                                style={{
+                                    minWidth: '250px',
+                                    maxWidth: '300px',
+                                }}
                             >
-                                <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex justify-center items-center mr-6">
-                                    <span className="text-sm">{index + 1}</span>
+                                {/* Circle Pin */}
+                                <div className="w-12 h-12 rounded-full bg-gray-800 text-white flex justify-center items-center mb-4">
+                                    <span className="text-lg font-bold">{index + 1}</span>
                                 </div>
-                                <div className="text-left text-white">
-                                    <h4 className="font-bold">{item.time}</h4>
-                                    <h5 className="text-lg">{item.title}</h5>
+
+                                {/* Schedule Item Content */}
+                                <div className="text-center text-white">
+                                    <h4 className="text-xl font-semibold">{item.time}</h4>
+                                    <h5 className="text-lg font-semibold">{item.title}</h5>
                                     <p className="text-sm">{item.description}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
+
+                    {/* Right Scroll Arrow */}
+                    <button
+                        onClick={scrollRight}
+                        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+                    >
+                        &#8594;
+                    </button>
                 </div>
             </div>
         </div>
@@ -82,4 +144,3 @@ const Schedule = () => {
 };
 
 export default Schedule;
-
