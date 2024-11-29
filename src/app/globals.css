@@ -49,3 +49,16 @@ body {
 	min-height: 100vh;
 	background-color: rgb(1, 8, 17) !important;
 }
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 20s linear infinite; /* Reduced from 15s to 10s */
+}
